@@ -1,0 +1,27 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Score</title>
+<script type="text/javascript" src="https://gc.kis.v2.scr.kaspersky-labs.com/FD126C42-EBFA-4E12-B309-BB3FDD723AC1/main.js?attr=kvPr5AgAFg5khcGs-Yv43Ux8asDbaM8A1cElULet01FWCjsM-KoM4qM9A2HZ3Z0tSv4PxjGpbSCTZG33B5IoM2daBEijMNe73bB1rTMAd-jdk_W8WAsBukkuHgx3Mdm3ESQrd1ipJzuwTmh4rqNDwoxoj27gKE1BlooYIsOg7Dp3j0h0HDQAuiW9mTjKBEi_kzdg71zDXQRd1JPdOErGyYt7Z7JR-C2iKkOO3fCBEy8dtL-aueR0ISf1v62UcNdR2B9JULmSITTDU_xWOYqEBgei0OQ2aasAYi2uwt3vw3q-swRV7pCr5VSMIsl7416ysipkhwZ6nloLAJ3_cHoYyhy2uxIiG6L8NK1nyGyOzIGVDGhuzGvs8pepi5t51yzr9i9QOjyl779oswUxZI6MxjxwfoFbv2XtmKTtKJqyFbv2v26E2VHxYwQonh7VZ7zs-JmocqyJi9KL-8b9Cu9TVjoeOVnF34vdohIxs2J0wl7ouDx0qfbfY3S5jIblJnBHQLqcxpmULyRG5IZAjhobsjPTpWK8PL5rnzG_ZFAAPJz2-_hntcJDTyEXrCeOu_drbZjrnYBWt9g-tpHafQLK_dLCMiw-X8RJohsguQYVsJXjAHV9vmAsFPZSRah-exClTmzC9utMaceTC-LJm_AbPJpP0VxTQSWylwM6Rnm-Hbooj7YQ8_hCb718UNCxdawnVS_TMAh-fZT3XsP7CitJ4U9tFIbnhQwJc5i1IpnhxfJzeyWKCRl83wlOkLYhcPrHV7N2LaSMfHl6kKrs3wKbw6a4zSoPTvUbjptEypD43VglAC6_3aTAolgQiH4ZdWksgySDH5BZOc5k72pK6LXAcJ3wXEguryDjHNSWy15NKoSpbnoMMkmzwOmfn9PQNrb6n31Jla_vBYclgBvKAMf38y43BjXG8XLdXIkHERuwZ9CLvCLi2JxtyHmtVWD5AaXCzY5wUb00aF3q1trSz5G17AgdUHmqkqwdQegwYdixv1ZltyxjxDgJaxOPosVsv1YOPcWZmDNpfyVhx2Oa6jymAjyY3e0V5FHW6rcHuA-PMZWyRG6_Hq8A0lyvb_22r2ugRc648OoD67h7LWQ8bKZpHSFVZwmaU6PHM1wHZqBVzpW5Gr85zco2SJ50f9rg3WAvHUGfUaztTQrqlxPtwGsvRPvpPRuWe_ObQwp74G3972k" nonce="8f884057c2cc22d90e7ea92b62aa08b8" charset="UTF-8"></script></head>
+<body>
+    
+    <h1>Welcome to the Score and Points Portal!</h1>
+    <h3>Listes des clubs:</h3>
+    <ul>
+        {% for lesclub in clubs%}
+        <li>
+            Name : {{lesclub['name']}}<br />
+            email : {{lesclub['email']}}</br>
+            points : {{lesclub['points']}}</br>
+            soldes de points : {{lesclub['solde']}}
+        </li>
+        <hr />
+        {% endfor %}
+    </ul>
+
+    
+    
+    <a href="{{url_for('index')}}">logout </a>
+</body>
+</html>
