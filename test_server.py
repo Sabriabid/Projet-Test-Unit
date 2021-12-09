@@ -47,8 +47,8 @@ def test_purchase(client):
     data = rv2.data.decode()
     assert "Great-booking complete!" in data
     #pytest et commande
-    assert "Number of Places: 23" in data 
-    assert "Points available: 7" in data 
+    assert data.find("Number of Places: 23") 
+    assert data.find("Points available: 124") 
 
 #Test de la limite des 12 places achetées 
 def test_purchase_12places(client):
@@ -57,24 +57,24 @@ def test_purchase_12places(client):
     data = rv2.data.decode()
     assert data.find("Impossible to purchase more than 12 places!")
     #pytest
-    assert "Number of Places: 23" in data 
-    assert "Points available: 7" in data
+    assert data.find("Number of Places: 23") 
+    assert data.find("Points available: 124") 
     #ligne de commande
-    # assert "Number of Places: 25" in data 
-    # assert "Points available: 13" in data
+    # assert data.find("Number of Places: 25") 
+    # assert data.find("Points available: 130") 
 
 #Test de la disponibilité des points lors de l'achat
 def test_purchase_PointDispo(client):
-    rv2=client.post('/purchasePlaces', data =dict(club = "Simply Lift", competition="Spring Festival", places = 10), follow_redirects = True)
+    rv2=client.post('/purchasePlaces', data =dict(club = "Simply Lift", competition="Spring Festival", places = 130), follow_redirects = True)
     assert rv2.status_code == 200
     data = rv2.data.decode()
     assert data.find("Not enought points !")
     #pytest
-    assert "Number of Places: 23" in data 
-    assert "Points available: 7" in data
-    #ligne de commande:*
-    assert "Number of Places: 25" in data 
-    assert "Points available: 13" in data
+    assert data.find("Number of Places: 23") 
+    assert data.find("Points available: 124") 
+    #ligne de commande:
+    # assert data.find("Number of Places: 25") 
+    # assert data.find("Points available: 130") 
 # Test de Date de competition 
 def test_datecompetition(client):
     rv=client.post('/purchasePlaces', data =dict(club = "Simply Lift", competition="Fall Classic", places = 1), follow_redirects = True)
@@ -82,11 +82,11 @@ def test_datecompetition(client):
     data= rv.data.decode()
     assert data.find("La competition est deja passé")
      #pytest
-    # assert "Number of Places: 11" in data 
-    # assert "Points available: 7" in data
-    #ligne de commande:*
-    assert "Number of Places: 13" in data 
-    assert "Points available: 13" in data
+    assert data.find("Number of Places: 11") 
+    assert data.find("Points available: 124") 
+    #ligne de commande:
+    # assert data.find("Number of Places: 13") 
+    # assert data.find("Points available: 130") 
 
 def test_logout(client):
     rv = client.get("/logout", follow_redirects=True)
@@ -129,12 +129,12 @@ def test_integration(client):
     print(data2)
     assert "Great-booking complete!" in data3
     # pytest:
-    # assert "Number of Places: 22" in data3 
-    # assert "Points available: 4" in data3
+    assert data.find("Number of Places: 22") 
+    assert data.find("Points available: 121") 
     # ligne de commande:
-    assert "Number of Places: 24" in data3
-    assert "Points available: 10" in data3
-    
+    # assert data.find("Number of Places: 23") 
+    # assert data.find("Points available: 124") 
+   
     #Deconnexion
     rv_logout = client.get("/logout", follow_redirects=True)
     assert rv_logout.status_code == 200
