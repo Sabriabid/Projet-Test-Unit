@@ -1,8 +1,5 @@
 import pytest
-from werkzeug.utils import redirect
-from server import loadClubs
-from server import loadCompetitions
-from server import app
+from server import loadClubs,loadCompetitions,app
 from conftest import client
         
 def test_integration(client):
@@ -17,7 +14,6 @@ def test_integration(client):
     rp = client.get('/')
     assert rp.status_code == 200
     data=rp.data.decode()
-    print(data)
     assert "Welcome to the GUDLFT Registration Portal!" in data
 
     #Connexion
@@ -30,18 +26,13 @@ def test_integration(client):
     rv_test= client.get('/book/Spring%20Festival/Simply%20Lift',follow_redirects=True)
     assert rv_test.status_code==200
     data2=rv_test.data.decode()
-    print(data1)
     assert "Spring Festival" in data2
 
     #Achat
     rv_test1=client.post('/purchasePlaces', data =dict(club="Simply Lift", competition="Spring Festival", places= 1), follow_redirects = True)
     assert rv_test1.status_code == 200
     data3 =rv_test1.data.decode()
-    print(data2)
     assert "Great-booking complete!" in data3
-    # # pytest:
-    # assert data.find("Number of Places: 22") 
-    # assert data.find("Points available: 121") 
     # ligne de commande:
     assert data.find("Number of Places: 23") 
     assert data.find("Points available: 124") 

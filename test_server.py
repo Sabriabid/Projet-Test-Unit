@@ -1,6 +1,5 @@
 
 import pytest
-from werkzeug.utils import redirect
 from server import app
 from conftest import client
         
@@ -91,4 +90,10 @@ def test_logout(client):
     assert rv.status_code == 200
     data= rv.data.decode()
     assert data.find("Welcome to the GUDLFT Registration Portal!")
+
+def test_historique(client):
+    rv =client.get("/historique", follow_redirects=True)
+    assert rv.status_code == 200
+    data= rv.data.decode()
+    assert data.find("Welcome to the Score and Points Portal!")
 
