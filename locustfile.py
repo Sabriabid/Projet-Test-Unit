@@ -19,11 +19,11 @@ class PerfTest(HttpUser):
 
     @task 
     def user_book(self):
-        self.client.get(url='/book/Spring%20Festival/Iron%20Temple')
+        self.client.get(url='/book/Spring Festival/Iron Temple')
 
     @task
     def user_score(self):
-        self.client.get(url='/score')
+        self.client.get(url='/historique')
 
     @task
     def user_purchase(self):
@@ -31,8 +31,8 @@ class PerfTest(HttpUser):
         #data = {"competitions":"Spring%20Festival","clubs":"Iron%20Temple"}
         #self.client.get(url='/book/Spring%20Festival/Iron%20Temple')
         #self.client.post("/purchasePlaces", data =dict(club = 'Iron Temple', competition='Spring Festival', places = 1))
-        data={"club":"Iron%20Temple","competition":"Spring%20Festival","places":1}
-        self.client.post("/purchasePlaces", data)
+        data={"club":"Iron Temple","competition":"Spring Festival","places":1}
+        self.client.post("/purchasePlaces", data=data)
 
 
 
