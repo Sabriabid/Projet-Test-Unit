@@ -1,4 +1,4 @@
-Projet Méthodo tests/tests unitaires RAMDANI Rayan, ABID Sabri et HAROUNE Rayane
+Projet Méthodo tests/tests unitaires RAMDANI Rayan, ABID Sabri et HAROUN Rayane
 
 Dans ce projet nous avons une WebApp avec plusieurs bugs.
 Notre objectif et de réaliser une série de tests afin de corriger toutes ces anomalies.
